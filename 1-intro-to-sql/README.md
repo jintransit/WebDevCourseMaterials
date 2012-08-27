@@ -1,12 +1,15 @@
 ## The fast-track, hands-on, no-nonsense introduction to SQL
 
 Rather than relying on dry explanations of mathematical set theory, this tutorial is organized as a survey of SQL statements and techniques. It is designed to let you infer from examples what SQL is all about as well as the kinds of problems it can help you solve.
+
 The promise of this tutorial is that you invest 30 minutes of your time and it will enable you to "speak" SQL right here, right now.
+
 The uncompromising emphasis here is on raw speed of learning new things.
 
 ### Introduction
 
 SQL is the universal language that allows relational database management systems (RDBMS) to communicate with the outside world.
+
 The easiest way for a developer to become familiar with SQL is by using SQLite, a file-based (serverless) RDBMS.
 
 ### Let's start coding already!
@@ -44,8 +47,11 @@ sqlite>
 ```
 
 At this point, SQLite has created and appropriately formatted a new file, `/tmp/dev.db`, and is now waiting for you to tell it what to do.
+
 You communicate your intent to SQLite by typing in SQL statements.
+
 As we already mentioned, when we start working on a new database, the first thing we do is create a table.
+
 At the `sqlite>` prompt, type the following SQL statement:
 
 ```sql
@@ -60,9 +66,13 @@ CREATE TABLE presidencies (
 ```
 
 SQLite does not give any output in response, and that means it has successfully executed the statement.
+
 We now have an empty table called `presidencies`.
+
 Having an empty table in a database is like having an empty spreadsheet in front of you.
+
 The next step is therefore to populate the table with some data.
+
 We do this by using the `INSERT` statement. Try this:
 
 ```sql
@@ -77,6 +87,7 @@ INSERT INTO presidencies VALUES (
 ```
 
 Again, SQLite is not giving us any response, which means the `INSERT` statement was successfully executed.
+
 If we now query the contents of the table, we should see the newly inserted row. Try this:
 
 ```sql
@@ -96,6 +107,7 @@ id|first_name|other_names|year_from|year_to|notes
 ```
 
 Since we set `id` to `NULL` in our `INSERT` statement and `id` has the `AUTOINCREMENT` attribute in the table definition, SQLite assigned the first available positive integer value and stored it as this record's primary key.
+
 "Primary key" simply means two things:
 - The developer has communicated his intention to use this field to uniquely identify each row of this table;
 - The RDBMS will therefore enforce the uniqueness of this key and use this information to optimize its execution of SQL statements against this table.
@@ -146,6 +158,7 @@ DELETE FROM presidencies WHERE id = 1;
 Query the whole table again to verify that it's empty.
 
 To continue exploring the features of SQL we are going to need a lot more data.
+
 Paste the statements below at the `sqlite>` prompt:
 
 ```sql
@@ -190,6 +203,7 @@ SELECT COUNT(*) FROM presidencies;
 The table has 30 rows.
 
 We want to generate a deduplicated list of all persons who held office.
+
 The SQL keyword `DISTINCT` performs the deduplication magic, and we are going to make use of the SQL text concatenation operator `||`:
 
 ```sql
@@ -205,6 +219,7 @@ SELECT COUNT(*) FROM presidencies WHERE year_from BETWEEN 1950 AND 1999;
 The answer to that question is 14 records.
 
 In 1941, the surprise attack at Pearl Harbor happened.
+
 We would like to know who was president of the United States at that time.
 
 ```sql
@@ -218,7 +233,9 @@ The expected output:
 ```
 
 We stored some notes on when both world wars began and ended. Let's query that information by asking for all records that contain the string " WW " inside the `notes` column.
+
 To perform text matching we need to use the `LIKE` predicate.
+
 Note: The percent sign has wildcard semantics in SQL.
 
 ```sql
@@ -235,6 +252,7 @@ The expected output:
 ```
 
 We want a breakdown of how many presidencies were full-term (lasted the full 4 years) versus how many lasted 1 or 2 or 3 years.
+
 That can also be done in SQL, however the syntax is slightly more convoluted.
 
 ```sql
@@ -259,9 +277,13 @@ The expected output:
 That means there were 24 presidencies which lasted the full 4 years, 4 which lasted 2 years etc.
 
 **Important side note**
+
 Being able to get predictable, consistent performance is an important part of software development, and there are some performance considerations to take into account when using `WHERE` clauses.
+
 The database engine performs these `WHERE` lookups significantly faster when it can rely on indexes.
+
 Let's say we know ahead of time that the most frequent queries are going to filter by `year_from` and `year_to`.
+
 In that case we need to create indexes on both fields:
 
 ```sql
@@ -274,6 +296,7 @@ Indexes do not make a big difference on a table with 30 records, but it is recom
 ### Foreign key relationships: the ONE-TO-MANY case
 
 Let us now explore how we can build database models for information entities which are related to one another.
+
 We are going to use the geographical hierarchy of continents `->` countries `->` cities to illustrate this.
 - A continent has many countries
 - A country has many cities
@@ -302,6 +325,7 @@ CREATE TABLE cities (
 ```
 
 Let's populate these tables with some data I have prepared for you in a file.
+
 Quit SQLite with Ctrl-D, download and inspect the file as shown below:
 
 ```bash
@@ -328,6 +352,7 @@ SELECT * FROM continents;
 ```
 
 behaves the way you expect.
+
 Next, go ahead and run the query below, and see what happens:
 
 ```sql
@@ -335,6 +360,7 @@ SELECT * FROM continents AS c1, continents AS c2;
 ```
 
 The above is definitely a valid SQL statement, and I'm just showing it to you in order for you to get comfortable with the idea that SQL statements may reference more than one database table, and if you reference the same table twice, the output will be the cartesian product of the table's row set with itself.
+
 Next, try this:
 
 ```sql
@@ -349,12 +375,17 @@ ORDER BY
 ```
 
 What we just did is formally called "traversing a foreign key relationship".
+
 We retrieved some records from the `countries` table, found some "pointers" in the `continent_id` column, went to the `continents` table, retrieved the continent descriptions pertaining to those pointers, and then brought back those results and associated them with each row in the `countries` table.
+
 Congratulations, you have just learned about the "R" in "RDBMS", this is what we mean by "relational".
 
 Notice one thing: the query above will start suffering from performance issues for tables beyond a certain size.
+
 Before we go on, we want to take care of performance-by-design.
+
 The lookups which happen during foreign key relationship traversal would be much more efficient when supported by the appropriate indexes.
+
 Let's create indexes on those foreign key columns.
 
 ```sql
@@ -385,7 +416,9 @@ ORDER BY
 ```
 
 In order to avoid repeated typing of complex queries, SQL allows us to store a given `SELECT` statement under a specific name.
+
 The resulting database object is called a view.
+
 Let's create a view for the previous `SELECT` statement:
 
 ```sql
@@ -437,7 +470,9 @@ Oceania|2
 ```
 
 What we did here is we joined a real table (`continents`) with a virtual one called a subquery (the result of a `SELECT` statement).
+
 We can do this because SQL doesn't really join tables, it joins rectangular result sets consisting of rows and columns.
+
 Let's store this query in a view, we are going to make use of it in a future tutorial.
 
 ```sql
@@ -454,6 +489,7 @@ WHERE
 ### Foreign key relationships: the MANY-TO-MANY case
 
 Up to this point, we have explored SQL statements on a single table, as well as one-to-many relationships.
+
 How do we model many-to-many relationships?
 
 How do we model people upvoting news stories on social networks?
@@ -469,7 +505,9 @@ Conversely:
 - One project may get contributions from several people
 
 The answer is that we need to define a separate information entity which is going to track those complex relationships for us.
+
 In Github's case, the core information entities are User and Project, and we are going to name the third one Contributorship.
+
 Therefore:
 - A user has many contributorships
 - A contributorship belongs to a user
@@ -532,7 +570,9 @@ INSERT INTO contributorships VALUES (18, 5, 1);
 ```
 
 Now before we start issuing queries, let's take care of the performance-by-design side of things.
+
 We anticipate that we'll need to do heavy querying by `user_name` and by `project_name`.
+
 Therefore we need indexes on those columns:
 
 ```sql
@@ -541,6 +581,7 @@ CREATE INDEX index_on_project_name ON projects (project_name);
 ```
 
 We also need to make sure that duplicate contributorships cannot exist.
+
 We achieve this by creating a unique index on the combination of `user_id` and `project_id`:
 
 ```sql
@@ -664,6 +705,7 @@ WHERE
 This short overview of SQL ends here.
 
 If you want to learn more SQL tips and tricks, I highly recommend "Learn SQL The Hard Way":
+
 http://sql.learncodethehardway.org/book/
 
 If you followed this tutorial as part of a ROSEdu WebDev homework assignment, please:

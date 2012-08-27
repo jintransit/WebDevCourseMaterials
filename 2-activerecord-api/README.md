@@ -1,17 +1,22 @@
 ## Understanding The ActiveRecord API
 
 ActiveRecord is the Ruby persistence layer which is going to power the models in our web apps.
+
 ActiveRecord allows us to retrieve and manipulate database data in an object oriented manner, not just as static rows.
+
 ActiveRecord objects are "smart", they understand the structure of our database tables and know how to interact with them.
+
 ActiveRecord maps:
 - database tables to classes (we call these classes models)
-- table rows to objects (which are instances of the aforementioned models)
-- table columns to attributes of the aforementioned objects
+- table rows to objects (which are instances of said models)
+- table columns to attributes of said objects
 
 ### Let's start coding!
 
 We are going to reuse `dev.db`, the database file you ended up with at the end of the SQL tutorial.
+
 If you haven't yet gone through the SQL tutorial, stop right here, go do that now and when you're done, come back here.
+
 A good understanding of SQL is vital, and it is a non-negotiable prerequisite for understanding ActiveRecord.
 
 Create a new directory called `webdevmodels` and copy `dev.db` to it.
@@ -23,6 +28,7 @@ cp /tmp/dev.db .
 ```
 
 One more thing before we get started: let's make sure we have all the software components we need.
+
 At the terminal, type:
 
 ```
@@ -96,9 +102,13 @@ end
 ```
 
 The `configure do ... end` block at the top of the file is a standard callback mechanism which the Sinatra framework makes available to us.
+
 Any code that's inside the `configure` block will be executed only once, when the server starts up.
+
 We take advantage of this in order to instruct our application to establish a connection to the database.
+
 One other thing we do inside the `configure` block is to set up a logging mechanism, which instructs ActiveRecord to show us a trace of every SQL statement it is issuing against the database.
+
 This is going to be very useful to us because we get instant insight into how ActiveRecord translates our object-centric API calls into SQL statements.
 
 As you can see from `app.rb`, models are subclasses of `ActiveRecord::Base`, a very useful collection of behaviors for connecting our Ruby code to the database.
@@ -134,8 +144,11 @@ The above output is somewhat surprising. Contrast that with the output we get wh
 ```
 
 When we ask to see `Presidency`, we get an extra listing of exactly the fields we defined when we created table `presidencies` during the SQL tutorial.
+
 The explanation is simple - this is standard behavior we get for free when we extend `ActiveRecord::Base`.
+
 ActiveRecord takes our model name, converts it from camel-case to snake-case and pluralizes it.
+
 Then it looks inside the database (`dev.db` in our case) to see whether or not a table by that name exists.
 
 `Presidency` `->` conversion to snake-case `->` `presidency` `->` pluralization `->` `presidencies`
@@ -145,9 +158,13 @@ Then it looks inside the database (`dev.db` in our case) to see whether or not a
 - `dev.db`, please give me a list of its fields, along with their types. Someone has asked to see them.
 
 This is our first exposure to the fundamental principles which underpin the philosophy of ActiveRecord:
+
 **Convention Over Configuration**
+
 We only need to rely on our knowledge of how the table name - by convention - is being inferred from the model name; it spares us the effort of configuring explicitly in some XML file how the two pieces fit together.
+
 **Don't Repeat Yourself**
+
 Why should we specify any getter/setter methods in the class definition for `Presidency`? Why should we repeat ourselves when those methods are namesakes of columns in table `presidencies`, just one database query away?
 
 ### Let's start exploring the API
@@ -166,8 +183,11 @@ D, [] DEBUG -- :    (314.7ms)  SELECT COUNT(*) FROM "presidencies"
 ```
 
 This is our first encounter with a class-level method that performs table-level operations.
+
 Also, notice this is the first time we get to see the logger in action.
+
 Remember we instructed ActiveRecord to tell us what it's doing behind the scenes?
+
 Well, here we just invoked the class method `count` and in response, ActiveRecord executed the SQL statement you see above, extracted the result and showed it to us.
 
 Next, try this:
@@ -184,6 +204,7 @@ D, [] DEBUG -- :   Presidency Load (0.9ms)  SELECT "presidencies".* FROM "presid
 ```
 
 Notice we are getting an object back.
+
 What if we wanted the answer to be in the form of a hash? Try this:
 
 ```
@@ -198,9 +219,11 @@ D, [] DEBUG -- :   Presidency Load (0.9ms)  SELECT "presidencies".* FROM "presid
 ```
 
 In the SQL query above, `LIMIT 1` does what you think it does. It gives back one - randomly picked - table row.
+
 Don't rely on this row being the one with the lowest `id` in the table, however. That may be the case some of the time, but the database engine doesn't guarantee it.
 
 Also, note one other thing - we chained the `attributes` method call onto the back of the `first` method call.
+
 I just wanted to call your attention to this because it's typical of how we do things with ActiveRecord; we are going to do a lot of chaining in subsequent examples.
 
 Next, try this:
@@ -210,7 +233,9 @@ Presidency.all
 ```
 
 Expect a wall of text, it's essentially `SELECT * FROM presidencies`, reformatted as an array of objects.
+
 What if we wanted an array with just the values for the `year_from` column, kind of like `SELECT year_from FROM presidencies`?
+
 We can achieve this by chaining a `.map` onto a `.select`, like this:
 
 ```
@@ -238,11 +263,15 @@ D, [] DEBUG -- :   Presidency Load (0.5ms)  SELECT "presidencies".* FROM "presid
 ```
 
 This is a little strange, right?
+
 We expected the SQL query to be `SELECT * FROM presidencies WHERE first_name = 'Franklin'`, but ActiveRecord has surprisingly appended `LIMIT 1` onto the the back of the SQL statement.
+
 The purpose of `find_by_somecolumnnamehere` class methods is to make life easy for us in situations where we know there is a unique index on a column, and consequently an SQL lookup can only produce either exactly one row or nothing at all.
 
 In our case, no unique constraint has been defined on column `first_name` and we also know that we are going to find more than one row satisfying that condition.
+
 The class method we are looking for is `find_all_by_first_name`.
+
 Try this:
 
 ```
@@ -261,7 +290,9 @@ And this is indeed what we actually had in mind - an array of objects.
 As a side note, you should expect substandard performance from any SQL queries which employ `WHERE` clauses involving the `first_name` column, since that column has not been indexed.
 
 There were a few more types of `SELECT` statements we explored during the SQL tutorial.
+
 Let's see what their ActiveRecord equivalents might be.
+
 First of all:
 
 ```sql
@@ -287,6 +318,7 @@ Presidency.where("year_from BETWEEN ? AND ?", 1950, 1999).count
 ```
 
 Notice here we treat the values 1950 and 1999 as unsafe input (input that might originate from a malicious user of our web app).
+
 Replacing potentially unsafe input values with placeholders (question marks) in our `WHERE` clauses is the recommended practice in order to mitigate SQL injection risks.
 
 Then:
@@ -314,7 +346,9 @@ Presidency.where("notes LIKE ?", "% WW %").order(:year_from)
 ```
 
 A few words on the dangers of SQL injection.
+
 Let's say you want to implement search functionality in your web application - it's a very common requirement as well as one of the most likely places where a malicious user of your application will attack.
+
 The typical workflow when you respond to a search request would be to first capture the raw input from the search box:
 
 ```ruby
@@ -322,9 +356,13 @@ raw_input = params[:searchbox].to_s
 ```
 
 The naive, insecure approach would be to take the raw input and directly plug it into the `WHERE` clause.
+
 If you do that, you are opening up a new option for experienced attackers and sophisticated vulnerability scanning tools to exploit your web app.
+
 Through clever use of punctuation, malicious users may inject extra SQL statements onto the end of your `WHERE` clause and do a lot of damage to your database.
+
 Therefore to protect against such attacks you must be dilligent about sanitizing all input at the application boundary.
+
 One (admittedly radical) option for doing that is:
 
 ```ruby
@@ -333,6 +371,7 @@ Presidency.where("notes LIKE ?", "%#{sanitized_input}%").order(:year_from)
 ```
 
 Notice how we removed all punctuation marks from the raw input before letting it through.
+
 (On a more humorous side note, the pervasiveness of SQL injection vulnerabilities in web applications has given rise to the "Bobby Tables" Internet meme, refer to this XKCD webcomic http://xkcd.com/327/ where the meme originated.)
 
 The next type of `SELECT` statement we explored during the SQL tutorial:
@@ -356,6 +395,7 @@ Presidency.select("1 + year_to - year_from AS duration, COUNT(*) AS cnt").group(
 ### Executing raw SQL with ActiveRecord
 
 SQL statements can be very complex and sometimes ActiveRecord does not provide a suitable API for what we want.
+
 Thankfully ActiveRecord lets us execute raw SQL, which is what we are going to do now to create a new table:
 
 ```
@@ -363,7 +403,9 @@ ActiveRecord::Base.connection.execute("CREATE TABLE people (id INTEGER PRIMARY K
 ```
 
 We can now check the success of the SQL operation above by typing the class name `Person` at the prompt.
+
 Remember, we defined a model called `Person` towards the end of `app.rb`. That's why it works.
+
 We get:
 
 ```
@@ -373,6 +415,7 @@ We get:
 ### Inserting rows with ActiveRecord
 
 There are several ways to insert new rows into a table using ActiveRecord.
+
 Probably the simplest one is this:
 
 ```ruby
@@ -395,7 +438,7 @@ D, [] DEBUG -- :    (438.8ms)  commit transaction
  => "Saved."
 ```
 
-As you can see, the syntax of the generated `INSERT` statement differs slightly from what were using during the SQL tutorial, but the end-result is the same.
+As you can see, the syntax of the generated `INSERT` statement differs slightly from what we were using during the SQL tutorial, but the end-result is the same.
 
 The second method involves the use of a hash with the model's attributes as keys:
 
@@ -417,7 +460,9 @@ Notice how `save` returns true or false, while `create` returns a copy of the ob
 ### Foreign key relationships: the ONE-TO-MANY case
 
 The fact that in our model definitions a `Continent` `has_many :countries` and a `Country` `belongs_to :continent` brings with it some interesting behavior.
+
 Let's see how we ask the question "Which countries are in the continent called Oceania?"
+
 Try this:
 
 ```
@@ -433,6 +478,7 @@ D, [] DEBUG -- :   Country Load (0.5ms)  SELECT "countries".* FROM "countries" W
 ```
 
 Conversely, how would we ask the question "Which continent does the country of Argentina belong to?"
+
 Try this:
 
 ```
@@ -450,6 +496,7 @@ D, [2012-08-14T14:26:19.724695 #834] DEBUG -- :   Continent Load (0.4ms)  SELECT
 A similar strategy would be applicable for the bidirectional traversal of the foreign key relationship between `Country` and `City`.
 
 But how would we ask the question "Which cities are in the continent called Oceania?"
+
 The first thing that comes to mind is this:
 
 ```
@@ -467,8 +514,11 @@ D, [] DEBUG -- :   City Load (0.5ms)  SELECT "cities".* FROM "cities" WHERE "cit
 ```
 
 But notice the output isn't very usable. It's a list of lists of objects, not what we had in mind.
+
 Surely there must be a better solution.
+
 There is. During the SQL tutorial we defined a join view called `augmented_cities`, and in our `app.rb` we defined a model called `AugmentedCity`.
+
 Let's take advantage of that. Try this:
 
 ```
@@ -502,6 +552,7 @@ D, [] DEBUG -- :   AugmentedCity Load (1.0ms)  SELECT "augmented_cities".* FROM 
 ```
 
 Another view we defined during the SQL tutorial was `continent_statistics`.
+
 Let's put it to good use:
 
 ```
@@ -521,7 +572,9 @@ Oceania has 2 countries.
 ```
 
 Having a one-to-many relationship between two models brings with it slight changes to how we insert records into one of the tables (the one which holds the foreign key).
+
 Let's say there is a country called "East Timor" in Oceania and we want to add it to our database.
+
 Attempting this will fail:
 
 ```

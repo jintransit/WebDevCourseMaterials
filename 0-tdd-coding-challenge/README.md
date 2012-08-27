@@ -4,17 +4,18 @@ This challenge will test your ability to:
 - quickly absorb the syntax and idioms of an unfamiliar programming language (Ruby in this particular case);
 - discipline your brain to adapt to an unfamiliar (but superior) development methodology.
 
-The aforementioned development methodology is **TDD**, which stands for **T**est-**D**riven **D**evelopment.
+The development methodology we just mentioned is **TDD**, which stands for **T**est-**D**riven **D**evelopment.
+
 The mechanism of TDD is simple. It consists of iterations of **RED**-**GREEN**-**REFACTOR** where:
 - **RED** involves capturing a small piece of system specification in the form of a coded software test which MUST FAIL.
 - After demonstrating test failure, you build the **smallest possible amount** of production software that meets this specification. In other words, you write the code that makes the test **GREEN** (and doesn’t break any existing tests).
 - You then review the new code in conjunction with the existing system, correcting any deficiencies in its design or the overall system design (this step is known as the **REFACTOR**ing step and it is optional).
 
-If everything goes right, at the end of each iteration your git log will show two or three new commits which are clearly marked **RED**, **GREEN** and **REFACTOR**, respectively.
+If everything goes right, at the end of each iteration your git log will show two or three new commits which are clearly marked **RED**, **GREEN** and **REFACTOR**.
 
 ### The Challenge
 
-Someone handed you over some poorly designed, monolithic, yet functioning legacy code and, within strict adherence to the TDD methodology, you must turn it into a modular, robust, thoroughly testable piece of software.
+Someone handed over to you some poorly designed yet functioning legacy code and you must turn it into a modular, robust, thoroughly testable piece of software (within strict adherence to the TDD methodology).
 
 Below is the starting point for your challenge, a legacy Ruby program that simulates a gameplay.
 
@@ -79,6 +80,7 @@ At the interactive Ruby prompt, type `TicTacToe.new.play` several times:
 ```
 
 So the program clearly works, but we want a new one which is going to behave a little differently. And - **more importantly** - we want the development process to be test-driven.
+
 When the new program is fully developed, we would like the gameplay to look like this:
 
 ```
@@ -135,6 +137,7 @@ end
 Save the file.
 
 One more thing before we run the test: let's make sure we have the software we need.
+
 At the terminal, type:
 
 ```
@@ -191,10 +194,10 @@ The output looks like this:
 9394cbc Initial commit
 ```
 
-Notice how the commit messages are in reverse chronological order.
-(This will be important in a moment.)
+Notice how the commit messages are in reverse chronological order. (This will be important in a moment.)
 
 To make the test pass, the fix is easy: set `functionality_implemented` to `true`.
+
 Run the test again and the output you should see is:
 
 ```
@@ -210,6 +213,7 @@ Finished tests in 0.002294s, 435.9183 tests/s, 435.9183 assertions/s.
 ```
 
 As expected, the test passed.
+
 You can commit now, and make sure you start your commit message with `GREEN`:
 
 ```
@@ -224,8 +228,7 @@ Let's track our progress again with `git log --oneline`:
 9394cbc Initial commit
 ```
 
-There is one bash trick we can use to get a cleaner, more relevant output.
-Try this:
+There is one bash trick we can use to get a cleaner, more relevant output. Try this:
 
 ```
 git log --oneline | grep -Eo 'RED|GREEN|REFACTOR'
@@ -241,7 +244,9 @@ RED
 So you know you're doing well when you have a nice stack of alternating **RED**s and **GREEN**s, sprinkled with some **REFACTOR**s.
 
 Next, we want to test some very basic behaviors of our class.
+
 Before we implement the method called `turn`, let's first write a failing test for the assertion "an instance of `TicTacToePlayer` should respond to `turn`".
+
 For writing the test, the diff is going to be:
 
 ```ruby
@@ -330,18 +335,21 @@ RED
 ```
 
 Remember, if you see one `GREEN` immediately following another `GREEN`, you have failed the challenge because there was no failing test inbetween.
+
 You also fail the challenge for writing more than the **absolute minimum amount** of code needed to pass a test.
 
 ### Helpful hints
 
 To get started with the exercise, have a look at the expected output from the gameplay and see if you can break down the functionality of `TicTacToePlayer` into atomic behaviors that you can write individual tests for.
+
 Think of `TicTacToePlayer` as being bound by the terms and conditions of a contract that regulates how it should interact with the outside world. What would that contract look like? How would you go about verifying whether or not `TicTacToePlayer` abides by that contract?
 
 There are two kinds of tests you may want to write:
 - Test that the software actually provides the useful functionality it promised;
 - Test that the software doesn't break on bad input.
 
-One of the most challenging parts of TDD is the art and science of deciding what is and isn't a meaningful test.
+One of the most challenging parts of TDD is the art and science of deciding what is and what isn't a meaningful test.
+
 To help you along, here is an (incomplete) list of what you could potentially test for:
 - Test that the `turn` method doesn't raise an exception when given one argument (no matter what kind of argument);
 - Test that the `turn` method doesn't raise an exception when given a hash with two randomly generated key-value pairs as the only argument;
@@ -360,5 +368,6 @@ To help you along, here is an (incomplete) list of what you could potentially te
 - Test that the `turn` method returns `nil` when one of the players has won.
 
 All `Test::Unit` assertions are documented here:
+
 http://www.ruby-doc.org/stdlib-1.9.3/libdoc/test/unit/rdoc/Test/Unit/Assertions.html
 
