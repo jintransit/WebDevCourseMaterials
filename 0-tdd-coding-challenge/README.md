@@ -11,7 +11,9 @@ The mechanism of TDD is simple. It consists of iterations of **RED**-**GREEN**-*
 - After demonstrating test failure, you build the **smallest possible amount** of production software that meets this specification. In other words, you write the code that makes the test **GREEN** (and doesn’t break any existing tests).
 - You then review the new code in conjunction with the existing system, correcting any deficiencies in its design or the overall system design (this step is known as the **REFACTOR**ing step and it is optional).
 
-If everything goes right, at the end of each iteration your git log will show two or three new commits which are clearly marked **RED**, **GREEN** and **REFACTOR**.
+If everything goes right, at the end of each iteration your version control log will show two or three new commits which are clearly marked **RED**, **GREEN** and **REFACTOR**.
+
+(We are going to use git for version control.)
 
 ### The Challenge
 
