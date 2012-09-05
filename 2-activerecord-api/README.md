@@ -399,7 +399,7 @@ SQL statements can be very complex and sometimes ActiveRecord does not provide a
 Thankfully ActiveRecord lets us execute raw SQL, which is what we are going to do now to create a new table:
 
 ```
-ActiveRecord::Base.connection.execute("CREATE TABLE people (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name VARCHAR(255), last_name VARCHAR(255))")
+ActiveRecord::Base.connection.execute("CREATE TABLE people (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name VARCHAR(255), last_name VARCHAR(255), year_of_birth INTEGER, planet_of_birth VARCHAR(255))")
 ```
 
 We can now check the success of the SQL operation above by typing the class name `Person` at the prompt.
