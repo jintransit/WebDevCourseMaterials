@@ -367,7 +367,7 @@ One (admittedly radical) option for doing that is:
 
 ```ruby
 sanitized_input = raw_input.gsub(/[^a-zA-Z0-9 ]/, "")
-Presidency.where("notes LIKE ?", "%#{sanitized_input}%").order(:year_from)
+Presidency.where("notes LIKE ?", "%" + sanitized_input + "%").order(:year_from)
 ```
 
 Notice how we removed all punctuation marks from the raw input before letting it through.

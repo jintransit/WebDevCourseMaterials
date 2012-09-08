@@ -177,6 +177,7 @@ Functionality not implemented
 ```
 
 This is our first failing test.
+
 You can commit now, and make sure you start your commit message with `RED`:
 
 ```
