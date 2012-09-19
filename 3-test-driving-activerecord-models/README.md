@@ -550,11 +550,7 @@ Add this test method to the `TestPresidencyModel` class inside `activerecord_tes
 ```ruby
   def test_that_it_checks_for_overlapping_presidency_terms
     2021.upto(2022) do |year|
-      begin
-        Presidency.where("? BETWEEN year_from AND year_to", year).first.destroy
-      rescue NoMethodError
-        puts "No records have been deleted."
-      end
+      Presidency.where("? BETWEEN year_from AND year_to", year).first.destroy rescue NoMethodError
     end
     p1 = Presidency.new :first_name => "John", :other_names => "Doe", :year_from => 2021, :year_to => 2022
     assert( p1.save, failure_message = "Could not save a new Presidency object." )
@@ -566,7 +562,7 @@ Add this test method to the `TestPresidencyModel` class inside `activerecord_tes
   end
 ```
 
-What we did here is we first of all made sure that nothing else occupies the space 2021-2022. The first `destroy` command above may fail if no record was found, so we wrapped it in a begin-rescue-end block.
+What we did here is we first of all made sure that nothing else occupies the space 2021-2022. The `destroy` command in that first block may fail if no record was found, hence the `rescue` clause.
 
 Following that we created two presidency terms that overlap at the year 2022.
 
