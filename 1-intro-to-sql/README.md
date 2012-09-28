@@ -16,13 +16,13 @@ The easiest way for a developer to become familiar with SQL is by using SQLite, 
 
 To check whether you already have SQLite on your GNU/Linux system, open up a terminal and run:
 
-```bash
+```
 which sqlite3 && echo "OK - SQLite found"
 ```
 
 To install SQLite on Ubuntu, simply run:
 
-```bash
+```
 sudo apt-get install sqlite3
 ```
 
@@ -33,7 +33,7 @@ The first few baby steps when learning SQL are:
 
 First, let's create a new database. In a terminal, run:
 
-```bash
+```
 sqlite3 /tmp/dev.db
 ```
 
@@ -328,20 +328,20 @@ Let's populate these tables with some data I have prepared for you in a file.
 
 Quit SQLite with Ctrl-D, download and inspect the file as shown below:
 
-```bash
+```
 wget -O /tmp/geography.sql http://dserban.github.com/introduction-to-sql/geography.sql
 less /tmp/geography.sql
 ```
 
 Load the data into our database `dev.db` (this operation may take a while on slower computers):
 
-```bash
+```
 sqlite3 /tmp/dev.db < /tmp/geography.sql
 ```
 
 Now open the database again and let's write some queries.
 
-```bash
+```
 sqlite3 /tmp/dev.db
 ```
 
@@ -704,11 +704,9 @@ WHERE
 
 This short overview of SQL ends here.
 
-If you want to learn more SQL tips and tricks, I highly recommend "Learn SQL The Hard Way":
-
-http://sql.learncodethehardway.org/book/
+If you want to learn more SQL tips and tricks, I highly recommend [Learn SQL The Hard Way](http://sql.learncodethehardway.org/book/)
 
 If you followed this tutorial as part of a ROSEdu WebDev homework assignment, please:
 - save a copy of your current working SQLite database `dev.db` in an easy-to-find location for future use;
-- mark your name followed by "(SQL)" here (TODO: make a doodle).
+- mark your name followed by "(SQL)" [here](http://doodle.com/cayn4byuz3d9czgw).
 
