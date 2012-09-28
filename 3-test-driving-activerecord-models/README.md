@@ -785,5 +785,5 @@ git commit -am "GREEN: test_that_countries_which_begin_with_captures_records_cor
 
 ### Closing words
 
-If you followed this tutorial as part of a ROSEdu WebDev workshop, please mark your name followed by "(TDDAR)" here (TODO: make a doodle).
+If you followed this tutorial as part of a ROSEdu WebDev workshop, please mark your name followed by "(TDD-AR)" [here](http://doodle.com/cayn4byuz3d9czgw).
 

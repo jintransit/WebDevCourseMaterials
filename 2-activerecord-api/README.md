@@ -667,5 +667,5 @@ torvalds contributes to torvalds/linux
 
 This short overview of ActiveRecord ends here.
 
-If you followed this tutorial as part of a ROSEdu WebDev workshop, please mark your name followed by "(AR)" here (TODO: make a doodle).
+If you followed this tutorial as part of a ROSEdu WebDev workshop, please mark your name followed by "(AR-API)" [here](http://doodle.com/cayn4byuz3d9czgw).
 

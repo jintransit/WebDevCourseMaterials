@@ -374,3 +374,5 @@ All `Test::Unit` assertions are documented here:
 
 http://www.ruby-doc.org/stdlib-1.9.3/libdoc/test/unit/rdoc/Test/Unit/Assertions.html
 
+When you finish this challenge, please mark your name followed by "(TDD-CC)" [here](http://doodle.com/cayn4byuz3d9czgw).
+
