@@ -549,7 +549,7 @@ Add this test method to the `TestPresidencyModel` class inside `activerecord_tes
 
 ```ruby
   def test_that_it_checks_for_overlapping_presidency_terms
-    2021.upto(2022) do |year|
+    (2021..2022).each do |year|
       Presidency.where("? BETWEEN year_from AND year_to", year).first.destroy rescue NoMethodError
     end
     p1 = Presidency.new :first_name => "John", :other_names => "Doe", :year_from => 2021, :year_to => 2022
@@ -591,7 +591,7 @@ git commit -am "RED: test_that_it_checks_for_overlapping_presidency_terms"
     end
     if yf != 0 && yt != 0 && ok_to_validate_overlap
       how_many_overlaps = 0
-      yf.upto(yt) do |year|
+      (yf..yt).each do |year|
         how_many_overlaps += self.class.where("? BETWEEN year_from AND year_to", year).count
       end
       if how_many_overlaps != 0
