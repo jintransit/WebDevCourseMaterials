@@ -60,3 +60,52 @@ require 'sinatra'
 
 There shouldn't be any errors.
 
+If there are no errors, this concludes the installation process.
+
+### Working around issues
+
+For unknown reasons, the installation process may sometimes hang during various phases of `rvm install 1.9.3`.
+
+If that happens, one workaround of last resort might be to "transplant" a binary copy of RVM from another GNU/Linux machine of the same architecture.
+
+For 32-bit, take the steps outlined below.
+
+**Make sure you have `libreadline-dev`:**
+
+```
+sudo apt-get install libreadline-dev
+```
+
+**Remove the current RVM installation:**
+
+```
+rm -rf ~/.rvm
+```
+
+**Download the RVM tarball:**
+
+```
+wget -O /tmp/rvm.tar.gz http://ompldr.org/vZnZzcQ/rvm.tar.gz
+```
+
+**Verify its MD5 signature:**
+
+```
+$ md5sum /tmp/rvm.tar.gz
+05a92b8a2338ee990c6537d6d81c277d  /tmp/rvm.tar.gz
+```
+
+**Uncompress the tarball:**
+
+```
+tar -xf /tmp/rvm.tar.gz -C ~
+```
+
+**To verify that you have a working RVM installation, start the interactive console `irb` and type:**
+
+```ruby
+require 'sinatra'
+```
+
+There shouldn't be any errors.
+
