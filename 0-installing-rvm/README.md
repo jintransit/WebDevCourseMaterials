@@ -100,7 +100,7 @@ md5sum /tmp/rvm.tar.gz
 05a92b8a2338ee990c6537d6d81c277d  /tmp/rvm.tar.gz
 ```
 
-**Uncompress the tarball:**
+**Uncompress the tarball into the home directory:**
 
 ```
 tar -xf /tmp/rvm.tar.gz -C ~
