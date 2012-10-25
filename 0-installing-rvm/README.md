@@ -91,7 +91,12 @@ wget -O /tmp/rvm.tar.gz http://ompldr.org/vZnZzcQ/rvm.tar.gz
 **Verify its MD5 signature:**
 
 ```
-$ md5sum /tmp/rvm.tar.gz
+md5sum /tmp/rvm.tar.gz
+```
+
+**The output should be:**
+
+```
 05a92b8a2338ee990c6537d6d81c277d  /tmp/rvm.tar.gz
 ```
 
