@@ -4,9 +4,9 @@ This challenge will test your ability to:
 - quickly absorb the syntax and idioms of an unfamiliar programming language (Ruby in this particular case);
 - discipline your brain to adapt to an unfamiliar (but superior) development methodology.
 
-The development methodology we just mentioned is **TDD**, which stands for **T**est-**D**riven **D**evelopment.
+The development methodology we just mentioned is **TDD**, which stands for **T**est **D**riven **D**evelopment.
 
-The mechanism of TDD is simple. It consists of iterations of **RED**-**GREEN**-**REFACTOR** where:
+The mechanism of TDD is simple. It consists of iterations of **RED** - **GREEN** - **REFACTOR** where:
 - **RED** involves capturing a small piece of system specification in the form of a coded software test which MUST FAIL.
 - After demonstrating test failure, you build the **smallest possible amount** of production software that meets this specification. In other words, you write the code that makes the test **GREEN** (and doesn’t break any existing tests).
 - You then review the new code in conjunction with the existing system, correcting any deficiencies in its design or the overall system design (this step is known as the **REFACTOR**ing step and it is optional).
