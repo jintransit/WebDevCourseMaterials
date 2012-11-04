@@ -15,7 +15,26 @@ ActiveRecord maps:
 
 We are going to reuse `dev.db`, the database file you ended up with at the end of the SQL tutorial.
 
-If you haven't yet gone through the SQL tutorial, stop right here, go do that now and when you're done, come back here.
+If for any reason you cannot locate the file `dev.db`, please follow these steps:
+
+**Download `dev.db`:**
+
+```
+wget -O /tmp/dev.db http://dserban.github.com/introduction-to-sql/dev.db
+```
+
+**Verify its MD5 signature:**
+
+```
+md5sum /tmp/dev.db
+```
+**The output should be:**
+
+```
+fc566111e2973d9eeaa3285b4a21b89d  /tmp/dev.db
+```
+
+**Very important:** if you haven't yet gone through the SQL tutorial, stop right here, go do that now and when you're done, come back here.
 
 A good understanding of SQL is vital, and it is a non-negotiable prerequisite for understanding ActiveRecord.
 
