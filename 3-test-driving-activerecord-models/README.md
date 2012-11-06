@@ -1,6 +1,6 @@
 ## Test-driving ActiveRecord models
 
-This tutorial assumes a good knowledge of the ActiveRecord API and some familiarity with the software development methodology called **TDD** (**T**est-**D**riven **D**evelopment).
+This tutorial assumes a good knowledge of the ActiveRecord API and some familiarity with the software development methodology called **TDD** - **T**est **D**riven **D**evelopment.
 
 We are going to combine those skills and learn how to efficiently develop robust ActiveRecord models in quick iterations.
 
