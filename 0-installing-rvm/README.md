@@ -49,7 +49,7 @@ rvm --default use 1.9.3
 **Install the needed gems**
 
 ```
-gem install --no-ri --no-rdoc bundler sinatra sqlite3 sinatra-activerecord test-unit bcrypt-ruby
+gem install --no-ri --no-rdoc bundler sinatra sqlite3 sinatra-activerecord test-unit bcrypt-ruby nokogiri json alphadecimal
 ```
 
 **To verify that RVM was correctly installed, start the interactive console `irb` and type:**
