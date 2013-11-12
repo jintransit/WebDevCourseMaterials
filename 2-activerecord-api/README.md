@@ -20,7 +20,7 @@ If for any reason you cannot locate the file `dev.db`, please follow these steps
 **Download `dev.db`:**
 
 ```
-wget -O /tmp/dev.db http://dserban.github.com/introduction-to-sql/dev.db
+wget -O /tmp/dev.db http://dserban.github.io/introduction-to-sql/dev.db
 ```
 
 **Verify its MD5 signature:**
