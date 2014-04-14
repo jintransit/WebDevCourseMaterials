@@ -17,7 +17,7 @@ sudo apt-get update
 **We need a few packages before we begin:**
 
 ```
-sudo apt-get install vim git curl autoconf build-essential libssl-dev libreadline-dev zlib1g zlib1g-dev sqlite3 libsqlite3-dev libtool libyaml-dev libxslt-dev libxml2-dev libgdbm-dev libncurses5-dev pkg-config libffi-dev
+sudo apt-get install vim git-core curl autoconf bison build-essential libssl-dev libreadline-dev zlib1g zlib1g-dev sqlite3 libsqlite3-dev libtool libyaml-dev libxslt-dev libxml2-dev libgdbm-dev libncurses5-dev pkg-config libffi-dev nodejs
 ```
 
 **Install RVM (visit [the RVM site](https://rvm.io/rvm/install/) for reference, but do follow the instructions below):**
