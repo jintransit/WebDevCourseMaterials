@@ -34,16 +34,16 @@ curl -L https://get.rvm.io | bash -s stable
 
 **Close the terminal session you're in, open a new one.**
 
-**Install Ruby version 1.9.3:**
+**Install Ruby version 2.1.1:**
 
 ```
 rvm install 1.9.3
 ```
 
-**Set your preference for version 1.9.3 of Ruby:**
+**Set your preference for version 2.1.1 of Ruby:**
 
 ```
-rvm --default use 1.9.3
+rvm --default use 2.1.1
 ```
 
 **Install the needed gems**
