@@ -34,7 +34,7 @@ curl -L https://get.rvm.io | bash -s stable
 
 **Close the terminal session you're in, open a new one.**
 
-**Install Ruby version 2.1.1:**
+**Install Ruby version 2.1.2:**
 
 ```
 rvm install 2.1.1
