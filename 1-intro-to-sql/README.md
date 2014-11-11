@@ -715,7 +715,4 @@ This short overview of SQL ends here.
 
 If you want to learn more SQL tips and tricks, I highly recommend [Learn SQL The Hard Way](http://sql.learncodethehardway.org/book/)
 
-If you followed this tutorial as part of a ROSEdu WebDev homework assignment, please:
-- save a copy of your current working SQLite database `dev.db` in an easy-to-find location for future use;
-- mark your name followed by "(SQL)" [here](http://doodle.com/cayn4byuz3d9czgw).
-
+If you followed this tutorial as part of a ROSEdu WebDev classroom activity, please save a copy of your current working SQLite database `dev.db` in an easy-to-find location for future use.
