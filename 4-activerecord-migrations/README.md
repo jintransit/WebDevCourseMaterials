@@ -230,8 +230,3 @@ rake db:seed
 ```
 
 The output shows three `INSERT` SQL statements, as expected.
-
-### Closing words
-
-If you followed this tutorial as part of a ROSEdu WebDev workshop, please mark your name followed by "(AR-RAKE)" [here](http://doodle.com/cayn4byuz3d9czgw).
-
