@@ -613,7 +613,3 @@ torvalds contributes to torvalds/linux
 alex-morega contributes to mitsuhiko/flask
 ```
 This short overview of ActiveRecord ends here.
-
-If you followed this tutorial as part of a ROSEdu WebDev classroom activity, please mark your name at the URL below. This will help your instructor decide when to start the next presentation and/or demo.  
-http://doodle.com/zbwzbbbnaitw5v8a
-
