@@ -35,6 +35,6 @@ rvm --default use 2.1.5
 ```
 **Install the needed gems**
 ```
-gem install --no-ri --no-rdoc bundler sinatra sqlite3 sinatra-activerecord test-unit bcrypt nokogiri json rails
+gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit bcrypt nokogiri json rails
 ```
 **That's it. You're done.**
