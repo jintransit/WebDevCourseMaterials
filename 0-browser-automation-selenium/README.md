@@ -23,7 +23,8 @@ Load the codepad.org website in Firefox, by running the command:
 ```
 driver.get('http://codepad.org')
 ```
-Select the `Python` radio button on the left-hand side by executing the commands below (which is to say, **not manually**):
+Select the `Python` radio button on the left-hand side by executing the commands below.  
+**Do not select the radio button manually.** The point is to let the commands below do it.
 ```
 python_radio_button = driver.find_elements_by_css_selector('input[value=Python]')[0]
 python_radio_button.click()
