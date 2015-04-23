@@ -90,6 +90,8 @@ css_path = '#pkginfo tr:nth-child(6) > td'
 submitter_td = driver.find_elements_by_css_selector(css_path)[0]
 submitter_name = submitter_td.text
 
+print 'Found this submitter name:', submitter_name
+
 assert submitter_name == 'cpcgm'
 
 driver.quit()
