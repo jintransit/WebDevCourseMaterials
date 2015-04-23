@@ -36,7 +36,7 @@ text_area.send_keys("print 'Hello,' + ' World!'")
 ```
 Click the `Submit` button (not manually):
 ```
-submit_button = driver.find_elements_by_name('submit')[0]
+submit_button = driver.find_element_by_name('submit')
 submit_button.click()
 ```
 The resulting page should contain the string `Hello, World!`, let's verify this:
