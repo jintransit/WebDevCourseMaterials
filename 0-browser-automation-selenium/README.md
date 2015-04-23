@@ -26,7 +26,7 @@ driver.get('http://codepad.org')
 Select the `Python` radio button on the left-hand side by executing the commands below.  
 **Do not select the radio button manually.** The point is to let the commands below do it.
 ```
-python_radio_button = driver.find_elements_by_css_selector('input[value=Python]')[0]
+python_radio_button = driver.find_element_by_css_selector('input[value=Python]')
 python_radio_button.click()
 ```
 Write some code you want codepad.org to execute:
