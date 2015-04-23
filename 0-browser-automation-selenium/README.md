@@ -41,17 +41,27 @@ submit_button.click()
 ```
 The resulting page should contain the string `Hello, World!`, let's verify this:
 ```
-assert "Hello, World!" in driver.page_source
+assert 'Hello, World!' in driver.page_source
 ```
 This last command should not output anything, if the test passed. To prove to yourself that this test can indeed fail, try:
 ```
-assert "HelloWorld!" in driver.page_source
+assert 'HelloWorld!' in driver.page_source
 ```
 The test failed, and the failure looks like this:
 ```
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AssertionError
+```
+The more rigorous approach would be to test that the expected string is not only present, but also located at the correct place within the resulting page:
+```
+second_code_div = driver.find_elements_by_css_selector('.code')[1]
+
+results_box = second_code_div.find_elements_by_tag_name('pre')[1]
+
+python_execution_results = results_box.text
+
+assert python_execution_results == 'Hello, World!'
 ```
 Finally, close the connection to the browser:
 ```
