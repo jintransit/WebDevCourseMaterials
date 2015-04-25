@@ -39,7 +39,7 @@ Click the `Submit` button (not manually):
 submit_button = driver.find_element_by_name('submit')
 submit_button.click()
 ```
-The resulting page should contain the string `Hello, World!`, let's verify this:
+The subsequent page should contain the string `Hello, World!`, let's verify this:
 ```
 assert 'Hello, World!' in driver.page_source
 ```
@@ -53,7 +53,7 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AssertionError
 ```
-The more rigorous approach would be to test that the expected string is not only present, but also located at the correct place within the resulting page:
+The more rigorous approach would be to test that the expected string is not only present, but also located at the correct place within the subsequent page:
 ```
 second_code_div = driver.find_elements_by_css_selector('.code')[1]
 
@@ -67,7 +67,6 @@ Finally, close the connection to the browser:
 ```
 driver.quit()
 ```
-
 #### Second test case: Testing aur.archlinux.org
 
 Try to guess what the following program does, before running it:
@@ -102,37 +101,22 @@ Make it not pass.
 #### Third test case: Testing distrowatch.com
 
 Open http://distrowatch.com/ in a new Firefox tab.  
-Locate the `Select Distribution` drop-down and select `Arch` from it.  
+Locate the `Select Distribution` drop-down near the top of the page, and select `Arch` from the list.  
 Result: your browser is being redirected to http://distrowatch.com/table.php?distribution=arch
 
-Your next task is to automate this from within a Selenium test case.
-
-The answer to the question how to do this can easily be found on StackOverflow, but we'll use a more rigorous approach, by enlisting the help of the Selenium IDE.
-
-Search Google for `download selenium IDE`, then choose the topmost link.  
-Locate a paragraph that begins with `Download latest released version` and follow the link immediately following this text, which should contain the most recent version number.  
-Follow all subsequent instructions to install the Selenium IDE as a Firefox add-on.
-
-After restarting Firefox, locate the `Selenium IDE` icon/button somewhere close to the upper right-hand corner of the browser window.  
-Click it and the Selenium IDE window should open.
-
-Notice that the Selenium IDE, once opened, immediately goes into recording mode (you can tell by hovering your mouse over the "dot" button somewhere close to the upper right-hand corner of the application window.
-
-Let's record the sequence of actions we performed previously on distrowatch.com (load the front page, select `Arch`).  
-There should now be a `selectAndWait` entry in one of the table views in the Selenium IDE.
-
-From the `File` menu of the Selenium IDE, select `Export Test Case As...`, then `Python 2 / unittest / WebDriver`.  
-When prompted for a file name, save the test case as `/tmp/test.py`.
-
-Inspect the contents of file `/tmp/test.py`.  
-It should be clear now how to automate the drop-down selection from within a Selenium test case.
-
+Your next task is to automate this from within a Selenium test case.  
 Write the complete distrowatch.com test case.  
-Your `assert` statement should look like this:
-```
-assert "Arch Linux" in driver.title
-```
 
+Your `assert` statement should verify that the only `h1` tag in the subsequent page contains the expected distro name, `Arch Linux`.
+
+**Hint:** Selecting an entry from a drop-down list requires a special bit of API, like this:
+```
+# ...
+from selenium.webdriver.support.ui import Select
+# ...
+# drop_down_list = driver.find_element_by_ ...
+# Select(drop_down_list).select_by_visible_text('Arch')
+```
 #### Fourth test case: Testing a doodle.com poll
 
 Write three complete Selenium test cases for the following poll:  
@@ -149,4 +133,131 @@ Who is your favorite online retailer?
 Write a complete Selenium test case for a specific product page on your favorite online retailer's website.  
 However, your test scenario should begin at the website's main page, and it should use the search function to generate a product listing, and from there it should click on a link to go to a specific product page.  
 Your `assert` statement should verify that the product's price is range-bound within specified limits that you set.
+
+#### Solution: Testing distrowatch.com
+```
+from selenium import webdriver
+from selenium.webdriver.support.ui import Select
+
+driver = webdriver.Firefox()
+driver.get('http://distrowatch.com/')
+
+drop_down_list = \
+    driver.find_element_by_css_selector('select[name=distribution]')
+
+Select(drop_down_list).select_by_visible_text('Arch')
+
+distro_name = \
+    driver.find_element_by_tag_name('h1').text
+
+print 'Found this distro name:', distro_name
+
+assert distro_name == 'Arch Linux'
+
+driver.quit()
+```
+#### Solution: Testing a doodle.com poll
+```
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+import random
+from time import sleep
+
+while True:
+    print ''
+    print 'Setting checkmarks ...'
+
+    driver = webdriver.Firefox()
+    driver.get('http://doodle.com/ry3utyr8fzqgzncn')
+    sleep(1)
+
+    participant_name_field = driver.find_element_by_id('pname')
+
+    ActionChains(driver) \
+    .move_to_element(participant_name_field) \
+    .perform()
+
+    body = driver.find_element_by_tag_name('body')
+    for _ in range(3):
+        sleep(0.5)
+        body.send_keys(Keys.ARROW_UP)
+
+    random_name = \
+    random.choice('abcdef') + \
+    ''.join(random.choice('abcdef0123456789') for i in xrange(15))
+
+    participant_name_field.clear()
+    participant_name_field.click()
+    participant_name_field.send_keys(random_name)
+
+    set_of_choices_made_by_me = set([])
+
+    for checkmark_index in range(10):
+        if random.choice([True,False]) and random.choice([True,False]):
+            sleep(0.5)
+
+            driver \
+            .find_element_by_id( 'option' + str(checkmark_index) ) \
+            .click()
+
+            set_of_choices_made_by_me.add(checkmark_index)
+
+    driver.find_element_by_id('save').click()
+    sleep(3)
+
+    driver.quit()
+
+    print ''
+    print 'Checkmarks set by me:     ', sorted(list(set_of_choices_made_by_me))
+
+    print ''
+    print 'Collecting checkmarks from page ...'
+
+    driver = webdriver.Firefox()
+    driver.get('http://doodle.com/ry3utyr8fzqgzncn')
+
+    participant_name_field = driver.find_element_by_id('pname')
+
+    ActionChains(driver) \
+    .move_to_element(participant_name_field) \
+    .perform()
+
+    body = driver.find_element_by_tag_name('body')
+    for _ in range(3):
+        sleep(0.5)
+        body.send_keys(Keys.ARROW_UP)
+
+    all_participant_rows = driver.find_elements_by_css_selector('tr.participant')
+
+    row_saved_by_me = None
+    for p_row in all_participant_rows:
+        title = p_row \
+                .find_elements_by_css_selector('div.pname')[0] \
+                .get_attribute('title')
+        if title == random_name:
+            row_saved_by_me = p_row
+            break
+
+    choices = row_saved_by_me.find_elements_by_css_selector('td.partTableCell')
+
+    set_of_choices_found_on_page = set([])
+    for choice_index, choice in enumerate(choices):
+        img_list = choice.find_elements_by_tag_name('img')
+        if len(img_list) == 1:
+            set_of_choices_found_on_page.add(choice_index)
+
+    driver.quit()
+
+    print ''
+    print 'Checkmarks found on page: ', sorted(list(set_of_choices_found_on_page))
+
+    print ''
+    if set_of_choices_found_on_page == set_of_choices_made_by_me:
+        print 'Test passed.'
+    else:
+        print 'Test failed.'
+
+    assert set_of_choices_found_on_page == set_of_choices_made_by_me
+```
 
