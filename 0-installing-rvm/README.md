@@ -1,4 +1,4 @@
-## Installing RVM on Ubuntu 12.04
+## Installing RVM on Ubuntu 14.04
 
 **Find out whether you already have Ruby on your system**
 
@@ -25,13 +25,13 @@ curl -L https://get.rvm.io | bash -s stable
 ```
 **Close the terminal session you're in, open a new one.**
 
-**Install Ruby version 2.2.1:**
+**Install Ruby version 2.2.2:**
 ```
-rvm install 2.2.1
+rvm install 2.2.2
 ```
-**Set your preference for version 2.2.1 of Ruby:**
+**Set your preference for version 2.2.2 of Ruby:**
 ```
-rvm --default use 2.2.1
+rvm --default use 2.2.2
 ```
 **Install the needed gems**
 ```
