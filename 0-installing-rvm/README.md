@@ -5,7 +5,10 @@
 ```
 which ruby
 ```
-If you already have Ruby on your system, uninstall it now.
+If you already have Ruby on your system, please rename the executable:
+```
+sudo mv /usr/bin/ruby /usr/bin/ruby_orig
+```
 
 **Is your DPKG package database up to date?**
 ```
