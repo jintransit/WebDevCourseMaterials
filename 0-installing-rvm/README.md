@@ -21,7 +21,7 @@ sudo apt-get install vim git-core curl autoconf bison build-essential libssl-dev
 **Install RVM (visit [the RVM site](https://rvm.io/rvm/install/) for reference, but do follow the instructions below).**  
 **First, install the required public key:**
 ```
-curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 ```
 **Then, download and install RVM:**
 ```
