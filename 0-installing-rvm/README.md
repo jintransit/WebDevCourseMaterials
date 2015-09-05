@@ -35,13 +35,13 @@ curl -L https://get.rvm.io | bash -s stable
 ```
 **Close the terminal session you're in, open a new one.**
 
-**Install Ruby version 2.2.2:**
+**Install Ruby version 2.2.3:**
 ```
-rvm install 2.2.2
+rvm install 2.2.3
 ```
-**Set your preference for version 2.2.2 of Ruby:**
+**Set your preference for version 2.2.3 of Ruby:**
 ```
-rvm --default use 2.2.2
+rvm --default use 2.2.3
 ```
 **Install the needed gems**
 ```
