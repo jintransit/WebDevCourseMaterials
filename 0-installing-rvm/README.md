@@ -27,7 +27,7 @@ sudo cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 ```
 **Then, download and install RVM:**
 ```
-curl -L https://get.rvm.io | bash -s stable
+curl -L https://get.rvm.io | bash -s stable --ruby
 ```
 **Using your favorite text editor, append the line below to the end of your ~/.bashrc:**
 ```
@@ -35,14 +35,6 @@ curl -L https://get.rvm.io | bash -s stable
 ```
 **Close the terminal session you're in, open a new one.**
 
-**Install Ruby version 2.2.3:**
-```
-rvm install 2.2.3
-```
-**Set your preference for version 2.2.3 of Ruby:**
-```
-rvm --default use 2.2.3
-```
 **Install the needed gems**
 ```
 gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit bcrypt nokogiri json rails
