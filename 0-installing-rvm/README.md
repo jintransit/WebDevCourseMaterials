@@ -5,7 +5,7 @@
 ```
 which ruby
 ```
-If you already have Ruby on your system, please rename the executable:
+**If you already have Ruby on your system, please rename the executable:**
 ```
 sudo mv /usr/bin/ruby /usr/bin/ruby_orig
 ```
