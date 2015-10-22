@@ -459,6 +459,13 @@ Person.create(attrs)
 ```
 Notice how `save` returns true or false, while `create` returns a reference to the object which we just stored in the database.
 
+### Inserting rows with ActiveRecord
+
+At this point, the `Person` model stores 3 entries. The one with id `2` is Jane Doe, let's substitute the `first_name` for it:
+```
+Person.update(2, {:first_name => 'Mary'})
+```
+
 ### Foreign key relationships: the ONE-TO-MANY case
 
 The fact that in our model definitions a `Continent` `has_many :countries` and a `Country` `belongs_to :continent` brings with it some interesting behavior.
