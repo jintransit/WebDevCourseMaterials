@@ -538,7 +538,7 @@ And let's populate the tables with some sample data (5 users, 9 projects):
 
 ```sql
 INSERT INTO users VALUES (1, "alex-morega");
-INSERT INTO users VALUES (2, "gvoicu");
+INSERT INTO users VALUES (2, "spyked");
 INSERT INTO users VALUES (3, "igstan");
 INSERT INTO users VALUES (4, "dserban");
 INSERT INTO users VALUES (5, "torvalds");
@@ -547,7 +547,7 @@ INSERT INTO projects VALUES (2, "github/WebDev");
 INSERT INTO projects VALUES (3, "httpie/httpie");
 INSERT INTO projects VALUES (4, "basecamp/trix");
 INSERT INTO projects VALUES (5, "github/StartTheDark");
-INSERT INTO projects VALUES (6, "gvoicu/miniflow");
+INSERT INTO projects VALUES (6, "spyked/miniflow");
 INSERT INTO projects VALUES (7, "rails/rails");
 INSERT INTO projects VALUES (8, "sinatra/sinatra");
 INSERT INTO projects VALUES (9, "mitsuhiko/flask");
@@ -620,7 +620,7 @@ The output you should get is:
 alex-morega contributes to mitsuhiko/flask
 alex-morega contributes to github/WebDev
 alex-morega contributes to httpie/httpie
-dserban contributes to gvoicu/miniflow
+dserban contributes to spyked/miniflow
 dserban contributes to rails/rails
 dserban contributes to github/StartTheDark
 dserban contributes to github/WebDev
@@ -628,11 +628,11 @@ dserban contributes to basecamp/trix
 dserban contributes to httpie/httpie
 dserban contributes to sinatra/sinatra
 dserban contributes to torvalds/linux
-gvoicu contributes to gvoicu/miniflow
-gvoicu contributes to rails/rails
-gvoicu contributes to github/WebDev
-gvoicu contributes to sinatra/sinatra
-igstan contributes to gvoicu/miniflow
+spyked contributes to spyked/miniflow
+spyked contributes to rails/rails
+spyked contributes to github/WebDev
+spyked contributes to sinatra/sinatra
+igstan contributes to spyked/miniflow
 igstan contributes to github/WebDev
 torvalds contributes to torvalds/linux
 ```
@@ -647,7 +647,7 @@ FROM
   users,
   projects
 WHERE
-  users.user_name = 'gvoicu'
+  users.user_name = 'spyked'
   AND
   users.id = contributorships.user_id
   AND
@@ -659,7 +659,7 @@ ORDER BY
 The output you should get is:
 
 ```
-gvoicu/miniflow
+spyked/miniflow
 rails/rails
 github/WebDev
 sinatra/sinatra
@@ -689,7 +689,7 @@ The output you should get is:
 ```
 alex-morega
 dserban
-gvoicu
+spyked
 igstan
 ```
 
@@ -716,6 +716,3 @@ This short overview of SQL ends here.
 If you want to learn more SQL tips and tricks, I highly recommend [Learn SQL The Hard Way](http://sql.learncodethehardway.org/book/)
 
 If you followed this tutorial as part of the WebDev course, please save a copy of your current working SQLite database `dev.db` in an easy-to-find location for future use.
-
-Finally, please mark your name at the URL below.  
-http://doodle.com/mhre27tt8kpkeag3

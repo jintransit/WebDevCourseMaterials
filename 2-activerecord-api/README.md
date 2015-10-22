@@ -569,13 +569,13 @@ To go back and forth from both sides of a many-to-many relationship, the API is 
 
 Let's determine all projects for a given user:
 ```
-User.find_by(:user_name => "gvoicu").projects.map(&:project_name)
+User.find_by(:user_name => "spyked").projects.map(&:project_name)
 ```
 The output:
 ```
-  User Load (0.3ms)  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'gvoicu' LIMIT 1
+  User Load (0.3ms)  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'spyked' LIMIT 1
   Project Load (0.4ms)  SELECT "projects".* FROM "projects" INNER JOIN "contributorships" ON "projects"."id" = "contributorships"."project_id" WHERE "contributorships"."user_id" = ?  [["user_id", 2]]
- => ["github/WebDev", "gvoicu/miniflow", "rails/rails", "sinatra/sinatra"] 
+ => ["github/WebDev", "spyked/miniflow", "rails/rails", "sinatra/sinatra"] 
 ```
 Let's list all people who contribute to a given project:
 ```
@@ -585,7 +585,7 @@ The output:
 ```
   Project Load (0.4ms)  SELECT  "projects".* FROM "projects"  WHERE "projects"."project_name" = 'github/WebDev' LIMIT 1
   User Load (0.4ms)  SELECT "users".* FROM "users" INNER JOIN "contributorships" ON "users"."id" = "contributorships"."user_id" WHERE "contributorships"."project_id" = ?  [["project_id", 2]]
- => ["alex-morega", "gvoicu", "igstan", "dserban"] 
+ => ["alex-morega", "spyked", "igstan", "dserban"] 
 ```
 A new contributorship is created in a similar way to how we inserted a new record in the one-to-many case:
 ```ruby
@@ -602,18 +602,18 @@ The first part of the output looks like this:
 alex-morega contributes to github/WebDev
 alex-morega contributes to httpie/httpie
 alex-morega contributes to mitsuhiko/flask
-gvoicu contributes to github/WebDev
-gvoicu contributes to gvoicu/miniflow
-gvoicu contributes to rails/rails
-gvoicu contributes to sinatra/sinatra
+spyked contributes to github/WebDev
+spyked contributes to spyked/miniflow
+spyked contributes to rails/rails
+spyked contributes to sinatra/sinatra
 igstan contributes to github/WebDev
-igstan contributes to gvoicu/miniflow
+igstan contributes to spyked/miniflow
 dserban contributes to torvalds/linux
 dserban contributes to github/WebDev
 dserban contributes to httpie/httpie
 dserban contributes to basecamp/trix
 dserban contributes to github/StartTheDark
-dserban contributes to gvoicu/miniflow
+dserban contributes to spyked/miniflow
 dserban contributes to rails/rails
 dserban contributes to sinatra/sinatra
 torvalds contributes to torvalds/linux
