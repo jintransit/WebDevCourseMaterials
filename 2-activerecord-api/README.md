@@ -459,7 +459,7 @@ Person.create(attrs)
 ```
 Notice how `save` returns true or false, while `create` returns a reference to the object which we just stored in the database.
 
-### Inserting rows with ActiveRecord
+### Updating rows with ActiveRecord
 
 At this point, the `Person` model stores 3 entries. The one with id `2` is Jane Doe, let's substitute the `first_name` for it:
 ```
