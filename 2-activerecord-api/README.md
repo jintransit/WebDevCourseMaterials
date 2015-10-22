@@ -16,7 +16,7 @@ ActiveRecord provides mappings:
 Make a new Rails project inside the `/tmp` directory:
 ```
 cd /tmp
-rails new LearningActiveRecord
+rails new --skip-bundle LearningActiveRecord
 cd LearningActiveRecord
 ```
 We are going to reuse `dev.db`, the database file we ended up with at the end of the SQL tutorial.  
