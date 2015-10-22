@@ -575,15 +575,15 @@ The output:
 ```
   User Load (0.3ms)  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'gvoicu' LIMIT 1
   Project Load (0.4ms)  SELECT "projects".* FROM "projects" INNER JOIN "contributorships" ON "projects"."id" = "contributorships"."project_id" WHERE "contributorships"."user_id" = ?  [["user_id", 2]]
- => ["rosedu/WebDev", "gvoicu/miniflow", "rails/rails", "sinatra/sinatra"] 
+ => ["github/WebDev", "gvoicu/miniflow", "rails/rails", "sinatra/sinatra"] 
 ```
 Let's list all people who contribute to a given project:
 ```
-Project.find_by(:project_name => "rosedu/WebDev").users.map(&:user_name)
+Project.find_by(:project_name => "github/WebDev").users.map(&:user_name)
 ```
 The output:
 ```
-  Project Load (0.4ms)  SELECT  "projects".* FROM "projects"  WHERE "projects"."project_name" = 'rosedu/WebDev' LIMIT 1
+  Project Load (0.4ms)  SELECT  "projects".* FROM "projects"  WHERE "projects"."project_name" = 'github/WebDev' LIMIT 1
   User Load (0.4ms)  SELECT "users".* FROM "users" INNER JOIN "contributorships" ON "users"."id" = "contributorships"."user_id" WHERE "contributorships"."project_id" = ?  [["project_id", 2]]
  => ["alex-morega", "gvoicu", "igstan", "dserban"] 
 ```
@@ -599,20 +599,20 @@ AugmentedContributorship.all.each{|ac| puts "#{ac.user_name} contributes to #{ac
 The first part of the output looks like this:
 ```
   AugmentedContributorship Load (0.5ms)  SELECT "augmented_contributorships".* FROM "augmented_contributorships"
-alex-morega contributes to rosedu/WebDev
-alex-morega contributes to rosedu/wouso
+alex-morega contributes to github/WebDev
+alex-morega contributes to httpie/httpie
 alex-morega contributes to mitsuhiko/flask
-gvoicu contributes to rosedu/WebDev
+gvoicu contributes to github/WebDev
 gvoicu contributes to gvoicu/miniflow
 gvoicu contributes to rails/rails
 gvoicu contributes to sinatra/sinatra
-igstan contributes to rosedu/WebDev
+igstan contributes to github/WebDev
 igstan contributes to gvoicu/miniflow
 dserban contributes to torvalds/linux
-dserban contributes to rosedu/WebDev
-dserban contributes to rosedu/wouso
-dserban contributes to rosedu/techblog
-dserban contributes to rosedu/StartTheDark
+dserban contributes to github/WebDev
+dserban contributes to httpie/httpie
+dserban contributes to basecamp/trix
+dserban contributes to github/StartTheDark
 dserban contributes to gvoicu/miniflow
 dserban contributes to rails/rails
 dserban contributes to sinatra/sinatra

@@ -543,10 +543,10 @@ INSERT INTO users VALUES (3, "igstan");
 INSERT INTO users VALUES (4, "dserban");
 INSERT INTO users VALUES (5, "torvalds");
 INSERT INTO projects VALUES (1, "torvalds/linux");
-INSERT INTO projects VALUES (2, "rosedu/WebDev");
-INSERT INTO projects VALUES (3, "rosedu/wouso");
-INSERT INTO projects VALUES (4, "rosedu/techblog");
-INSERT INTO projects VALUES (5, "rosedu/StartTheDark");
+INSERT INTO projects VALUES (2, "github/WebDev");
+INSERT INTO projects VALUES (3, "httpie/httpie");
+INSERT INTO projects VALUES (4, "basecamp/trix");
+INSERT INTO projects VALUES (5, "github/StartTheDark");
 INSERT INTO projects VALUES (6, "gvoicu/miniflow");
 INSERT INTO projects VALUES (7, "rails/rails");
 INSERT INTO projects VALUES (8, "sinatra/sinatra");
@@ -618,22 +618,22 @@ The output you should get is:
 
 ```
 alex-morega contributes to mitsuhiko/flask
-alex-morega contributes to rosedu/WebDev
-alex-morega contributes to rosedu/wouso
+alex-morega contributes to github/WebDev
+alex-morega contributes to httpie/httpie
 dserban contributes to gvoicu/miniflow
 dserban contributes to rails/rails
-dserban contributes to rosedu/StartTheDark
-dserban contributes to rosedu/WebDev
-dserban contributes to rosedu/techblog
-dserban contributes to rosedu/wouso
+dserban contributes to github/StartTheDark
+dserban contributes to github/WebDev
+dserban contributes to basecamp/trix
+dserban contributes to httpie/httpie
 dserban contributes to sinatra/sinatra
 dserban contributes to torvalds/linux
 gvoicu contributes to gvoicu/miniflow
 gvoicu contributes to rails/rails
-gvoicu contributes to rosedu/WebDev
+gvoicu contributes to github/WebDev
 gvoicu contributes to sinatra/sinatra
 igstan contributes to gvoicu/miniflow
-igstan contributes to rosedu/WebDev
+igstan contributes to github/WebDev
 torvalds contributes to torvalds/linux
 ```
 
@@ -661,7 +661,7 @@ The output you should get is:
 ```
 gvoicu/miniflow
 rails/rails
-rosedu/WebDev
+github/WebDev
 sinatra/sinatra
 ```
 
@@ -675,7 +675,7 @@ FROM
   users,
   projects
 WHERE
-  projects.project_name = 'rosedu/WebDev'
+  projects.project_name = 'github/WebDev'
   AND
   users.id = contributorships.user_id
   AND
@@ -715,7 +715,7 @@ This short overview of SQL ends here.
 
 If you want to learn more SQL tips and tricks, I highly recommend [Learn SQL The Hard Way](http://sql.learncodethehardway.org/book/)
 
-If you followed this tutorial as part of a ROSEdu WebDev classroom activity, please save a copy of your current working SQLite database `dev.db` in an easy-to-find location for future use.
+If you followed this tutorial as part of the WebDev course, please save a copy of your current working SQLite database `dev.db` in an easy-to-find location for future use.
 
-Finally, please mark your name at the URL below. This will help your instructor decide when to start the next presentation and/or demo.  
+Finally, please mark your name at the URL below.  
 http://doodle.com/mhre27tt8kpkeag3
