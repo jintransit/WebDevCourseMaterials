@@ -6,10 +6,10 @@ ActiveRecord allows us to retrieve and manipulate database data in an object ori
 
 ActiveRecord objects are "smart", they understand the structure of our database tables and know how to interact with them.
 
-ActiveRecord maps:
-- database tables to classes (we call these classes models)
-- table rows to objects (which are instances of said models)
-- table columns to attributes of said objects
+ActiveRecord provides mappings:
+- from database tables to classes (we call these classes models)
+- from table rows to objects (which are instances of said models)
+- from table columns to attributes of said objects
 
 ### Preparatory steps
 
