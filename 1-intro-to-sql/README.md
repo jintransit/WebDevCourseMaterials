@@ -331,7 +331,7 @@ Let's populate these tables with some data I have prepared for you in a file.
 Quit SQLite with Ctrl-D, download and inspect the file as shown below:
 
 ```
-wget -O /tmp/geography.sql http://dserban.github.com/introduction-to-sql/geography.sql
+wget -O /tmp/geography.sql http://dserban.github.io/introduction-to-sql/geography.sql
 less /tmp/geography.sql
 ```
 
