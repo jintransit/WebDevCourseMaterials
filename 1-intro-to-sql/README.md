@@ -232,7 +232,7 @@ The expected output:
 12|Franklin|D. Roosevelt|1941|1944|3rd term
 ```
 
-We stored some notes on when both world wars began and ended. Let's query that information by asking for all records that contain the string " WW " inside the `notes` column.
+We stored some notes on when both world wars began and ended. Let's query that information by asking for all records that contain the string `" WW "` inside the `notes` column.
 
 To perform text matching we need to use the `LIKE` predicate.
 
