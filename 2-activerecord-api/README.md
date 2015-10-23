@@ -44,7 +44,7 @@ md5sum db/development.sqlite3
 ```
 **The output should be:**
 ```
-fc566111e2973d9eeaa3285b4a21b89d  db/development.sqlite3
+56e90a36505173ebb169266ba676f1ca  db/development.sqlite3
 ```
 **Very important:** If you're new to SQL and you haven't yet gone through the SQL tutorial, stop right here, go do that now and when you're done, come back here. A good understanding of SQL is vital, and it is a non-negotiable prerequisite for understanding ActiveRecord.
 
