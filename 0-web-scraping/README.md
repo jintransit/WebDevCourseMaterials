@@ -22,7 +22,7 @@ doc.css("td").each do |td|
   end
 end
 
-# html > body > div:nth-child(2) > div:nth-child(6) > table > tbody > tr:nth-child(8) > td
+# html > body > div:nth-of-type(2) > div:nth-of-type(4) > table > tr:nth-of-type(8) > td
 ```
 
 ### Scenario 2:  
@@ -34,7 +34,7 @@ require 'open-uri'
 
 doc = Nokogiri::HTML(open("https://aur4.archlinux.org/packages/atom-editor/"))
 
-td_css_path = "html > body > div:nth-child(2) > div:nth-child(6) > table > tbody > tr:nth-child(8) > td"
+td_css_path = "html > body > div:nth-of-type(2) > div:nth-of-type(4) > table > tr:nth-of-type(8) > td"
 
 doc.css(td_css_path).each do |td|
   puts td.content
