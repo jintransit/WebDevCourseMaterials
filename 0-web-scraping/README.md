@@ -14,15 +14,15 @@ Nokogiri is a library that makes it very easy to parse HTML pages using CSS styl
 require 'nokogiri'
 require 'open-uri'
 
-doc = Nokogiri::HTML(open("https://aur.archlinux.org/packages/syncany-bzr/"))
+doc = Nokogiri::HTML(open("https://aur4.archlinux.org/packages/atom-editor/"))
 
 doc.css("td").each do |td|
-  if td.content == "dserban"
+  if td.content == "jreese"
     puts td.css_path
   end
 end
 
-# html > body > div:nth-of-type(2) > div:nth-of-type(4) > table > tr:nth-of-type(5) > td
+# html > body > div:nth-child(2) > div:nth-child(6) > table > tbody > tr:nth-child(8) > td
 ```
 
 ### Scenario 2:  
@@ -32,15 +32,15 @@ end
 require 'nokogiri'
 require 'open-uri'
 
-doc = Nokogiri::HTML(open("https://aur.archlinux.org/packages/syncany-bzr/"))
+doc = Nokogiri::HTML(open("https://aur4.archlinux.org/packages/atom-editor/"))
 
-td_css_path = "html > body > div:nth-of-type(2) > div:nth-of-type(4) > table > tr:nth-of-type(5) > td"
+td_css_path = "html > body > div:nth-child(2) > div:nth-child(6) > table > tbody > tr:nth-child(8) > td"
 
 doc.css(td_css_path).each do |td|
   puts td.content
 end
 
-# dserban
+# jreese
 ```
 
 ### Changing the user agent
