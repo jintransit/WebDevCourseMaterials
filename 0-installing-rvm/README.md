@@ -39,7 +39,7 @@ rvm install 2.3.0
 **Install the needed gems:**
 ```
 gem update --system 2.2.2
-gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit bcrypt nokogiri json rake minitest debug_inspector byebug coffee-script-source execjs multi_json sass rdoc binding_of_caller coffee-script uglifier sdoc jbuilder coffee-rails jquery-rails sass-rails web-console turbolinks rails
+gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit json rails
 ```
 
 **Fix the Gemfile template:**
