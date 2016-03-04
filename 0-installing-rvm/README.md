@@ -35,9 +35,8 @@ curl -L https://get.rvm.io | bash
 ```
 **Install Ruby:**
 ```
-rvm install 2.3.0
+source ~/.rvm/scripts/rvm && rvm install 2.3.0
 ```
-**Close the terminal session you're in, open a new one.**  
 **Install the needed gems:**
 ```
 gem update --system 2.2.2
