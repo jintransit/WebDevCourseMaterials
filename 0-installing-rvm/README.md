@@ -25,9 +25,10 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 sudo mkdir -p /etc/pki/tls/certs
 sudo cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 ```
-**Then, download and install RVM:**
+**Then, download and install RVM and Ruby:**
 ```
-curl -L https://get.rvm.io | bash -s stable --ruby
+curl -L https://get.rvm.io | bash
+rvm install 2.3.0
 ```
 **Using your favorite text editor, append the line below to the end of your ~/.bashrc:**
 ```
@@ -37,6 +38,7 @@ curl -L https://get.rvm.io | bash -s stable --ruby
 
 **Install the needed gems**
 ```
+gem update --system 2.2.2
 gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit bcrypt nokogiri json rake minitest debug_inspector byebug coffee-script-source execjs multi_json sass rdoc binding_of_caller coffee-script uglifier sdoc jbuilder coffee-rails jquery-rails sass-rails web-console turbolinks rails
 ```
 **That's it. You're done.**
