@@ -36,9 +36,23 @@ rvm install 2.3.0
 ```
 **Close the terminal session you're in, open a new one.**
 
-**Install the needed gems**
+**Install the needed gems:**
 ```
 gem update --system 2.2.2
 gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit bcrypt nokogiri json rake minitest debug_inspector byebug coffee-script-source execjs multi_json sass rdoc binding_of_caller coffee-script uglifier sdoc jbuilder coffee-rails jquery-rails sass-rails web-console turbolinks rails
+```
+
+**Fix the Gemfile template:**
+```
+for gemFile in $(ls ${GEM_HOME}/gems/railties-*/lib/rails/generators/rails/app/templates/Gemfile)
+do
+cat > ${gemFile} <<EOF
+source 'https://rubygems.org'
+
+gem 'rails'
+gem 'sqlite3'
+gem 'spring', group: :development
+EOF
+done
 ```
 **That's it. You're done.**
