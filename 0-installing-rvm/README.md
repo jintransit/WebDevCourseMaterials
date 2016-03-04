@@ -37,6 +37,6 @@ curl -L https://get.rvm.io | bash -s stable --ruby
 
 **Install the needed gems**
 ```
-gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit bcrypt nokogiri json rails
+gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit bcrypt nokogiri json rake minitest debug_inspector byebug coffee-script-source execjs multi_json sass rdoc binding_of_caller coffee-script uglifier sdoc jbuilder coffee-rails jquery-rails sass-rails web-console turbolinks rails
 ```
 **That's it. You're done.**
