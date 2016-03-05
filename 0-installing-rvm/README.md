@@ -39,7 +39,7 @@ source ~/.rvm/scripts/rvm && rvm install 2.3.0
 ```
 **Install the needed gems:**
 ```
-gem update --system 2.2.2
+gem update --no-ri --no-rdoc --system 2.2.2
 gem install --no-ri --no-rdoc bundler spring sinatra sqlite3 sinatra-activerecord test-unit json rails
 ```
 **Fix the Gemfile template:**
