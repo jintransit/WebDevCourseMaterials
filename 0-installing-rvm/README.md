@@ -49,6 +49,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'sqlite3'
+gem 'tzinfo-data'
 gem 'spring', group: :development
 EOF
 done
