@@ -19,11 +19,9 @@ sudo apt-get update
 sudo apt-get install ca-certificates vim git-core curl autoconf bison build-essential gawk libgmp-dev libssl-dev libreadline-dev zlib1g zlib1g-dev sqlite3 libsqlite3-dev libtool libyaml-dev libxslt1-dev libxml2-dev libgdbm-dev libncurses5-dev pkg-config libffi-dev npm
 ```
 **Install RVM (visit [the RVM site](https://rvm.io/rvm/install/) for reference, but do follow the instructions below).**  
-**First, install the required public key and copy the cert file to the location where `curl` expects it:**
+**First, install the required public key:**
 ```
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-sudo mkdir -p /etc/pki/tls/certs
-sudo cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 ```
 **Then, download and install RVM:**
 ```
