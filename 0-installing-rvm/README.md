@@ -44,6 +44,7 @@ gem install --no-ri --no-rdoc bundler spring sqlite3 tzinfo-data rake minitest t
 ```
 for gemFile in $(ls ${GEM_HOME}/gems/railties-*/lib/rails/generators/rails/app/templates/Gemfile)
 do
+cp ${gemFile} ${gemFile}.backup
 cat > ${gemFile} <<EOF
 source 'https://rubygems.org'
 
