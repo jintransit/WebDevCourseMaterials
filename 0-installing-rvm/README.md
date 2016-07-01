@@ -31,14 +31,15 @@ curl -L https://get.rvm.io | bash
 ```
 [[ -s ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
 ```
-**Install Ruby:**
+**Install Ruby:**  
+In order to make sure you are installing the current stable version of Ruby, please examine the output of the following bash snippet:
+```
+lynx -dump https://www.ruby-lang.org/en/downloads/ | grep -o 'The current stable version is.*Please' | rev | sed 's/\.//' | rev | cut -d' ' -f6 | sed 's/^/rvm install /'
+```
+Run the commands below, making sure in the second command that you are installing the current stable version of Ruby (found in the previous step):
 ```
 source ~/.rvm/scripts/rvm
 rvm install 2.3.1
-```
-Make sure you are installing the current stable version of Ruby. The second command above can be generated automatically with the following bash snippet:
-```
-lynx -dump https://www.ruby-lang.org/en/downloads/ | grep -o 'The current stable version is.*Please' | rev | sed 's/\.//' | rev | cut -d' ' -f6 | sed 's/^/rvm install /'
 ```
 **Install the needed gems:**
 ```
