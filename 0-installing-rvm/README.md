@@ -62,4 +62,13 @@ gem 'listen', group: :development
 EOF
 done
 ```
+**Verify that Rails has been installed correctly:**
+```
+cd /tmp
+rails new myfirstrailsapp --skip-bundle
+cd myfirstrailsapp
+rails s
+```
+The command `rails s` should output 6 lines of information and you should now find something interesting by pointing your browser to [http://localhost:3000/](http://localhost:3000/).
+
 **That's it. You're done.**
