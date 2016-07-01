@@ -38,7 +38,7 @@ source ~/.rvm/scripts/rvm && rvm install 2.3.0
 **Install the needed gems:**
 ```
 gem update --no-ri --no-rdoc --system 2.2.2
-gem install --no-ri --no-rdoc bundler spring sqlite3 tzinfo-data rake minitest test-unit mime-types mail sprockets loofah json rails
+gem install --no-ri --no-rdoc bundler spring listen sqlite3 tzinfo-data rake minitest test-unit mime-types mail sprockets loofah json rails
 ```
 **Fix the Gemfile template:**
 ```
@@ -52,6 +52,7 @@ gem 'rails'
 gem 'sqlite3'
 gem 'tzinfo-data'
 gem 'spring', group: :development
+gem 'listen', group: :development
 EOF
 done
 ```
