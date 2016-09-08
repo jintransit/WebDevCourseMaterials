@@ -1,4 +1,4 @@
-## Installing Ruby on Rails on Ubuntu 14.04 / 16.04
+## Installing Ruby on Rails on Ubuntu 16.04
 
 **Find out whether you already have Ruby on your system**
 
