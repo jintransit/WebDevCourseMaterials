@@ -44,7 +44,7 @@ rvm install 2.3.1
 **Install the needed gems:**
 ```
 gem update --no-ri --no-rdoc --system 2.2.2
-gem install --no-ri --no-rdoc bundler spring listen sqlite3 cassandra-driver tzinfo-data rake minitest test-unit mime-types mail sprockets rbczmq iruby loofah json rails
+gem install --no-ri --no-rdoc bundler spring listen sqlite3 cassandra-driver elasticsearch-persistence tzinfo-data rake minitest test-unit mime-types mail sprockets rbczmq iruby loofah json rails
 ```
 **Fix the Gemfile template:**
 ```
