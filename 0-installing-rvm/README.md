@@ -39,7 +39,7 @@ lynx -dump https://www.ruby-lang.org/en/downloads/ | grep -o 'The current stable
 Run the commands below, making sure in the second command that you are installing the current stable version of Ruby (found in the previous step):
 ```
 source ~/.rvm/scripts/rvm
-rvm install 2.3.1
+rvm install 2.3.3
 ```
 **Install the needed gems:**
 ```
